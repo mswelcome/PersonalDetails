@@ -1,0 +1,16 @@
+<%=fn%>
+<%=ln%>
+<%=age%>
+<%=hair%>
+<%=eye%>
+
+<h1> What is your favorite food?: </h1>
+<form method = "post" action = "p_food">
+	<input type = "text" name = "food">
+	<input type = "submit" value = "Submit">
+	<input type = "hidden" name = "fn" value = "<%=fn%>">
+	<input type = "hidden" name = "ln" value = "<%=ln%>">
+	<input type = "hidden" name = "age" value = "<%=age%>">
+	<input type = "hidden" name = "hair" value = "<%=hair%>">
+	<input type = "hidden" name = "eye" value = "<%=eye%>">
+</form>

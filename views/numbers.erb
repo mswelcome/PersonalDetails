@@ -1,0 +1,25 @@
+<%=fn%>
+<%=ln%>
+<%=age%>
+<%=hair%>
+<%=eye%>
+<%=food%>
+<%=drink%>
+
+<h1>What are your 3 favorite numbers?</h1>
+
+<form method = "post" action = "p_nums">
+	<input type = "text" name = "num1" required>
+	<input type = "text" name = "num2" required>
+	<input type = "text" name = "num3" required>
+	<input type = "submit" value = "Submit">
+	<input type = "hidden" name = "fn" value = "<%=fn%>">
+	<input type = "hidden" name = "ln" value = "<%=ln%>">
+	<input type = "hidden" name = "age" value = "<%=age%>">
+	<input type = "hidden" name = "hair" value = "<%=hair%>">
+	<input type = "hidden" name = "eye" value = "<%=eye%>">
+	<input type = "hidden" name = "food" value = "<%=food%>">
+	<input type = "hidden" name = "drink" value = "<%=drink%>">
+</form>
+
+	

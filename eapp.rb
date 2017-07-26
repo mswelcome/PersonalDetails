@@ -97,6 +97,53 @@ post '/p_drink' do
 	eye = params[:eye]
 	food = params[:food]
 	drink = params[:drink]
-	"#{fn} #{ln}, #{age}, #{hair}, #{eye}, #{food}, #{drink}"
-	#redirect 'nums?fn=' + fn + '&ln=' + ln + '&age=' + age + '&hair=' + hair + '&eye=' + eye + '&food=' + food + '&drink=' + drink
+	#{}"#{fn} #{ln}, #{age}, #{hair}, #{eye}, #{food}, #{drink}"
+	redirect 'nums?fn=' + fn + '&ln=' + ln + '&age=' + age + '&hair=' + hair + '&eye=' + eye + '&food=' + food + '&drink=' + drink
 end 
+
+get '/nums' do 
+	fn = params[:fn]
+	ln = params[:ln]
+	age = params[:age]
+	hair = params[:hair]
+	eye = params[:eye]
+	food = params[:food]
+	drink = params[:drink]
+	erb :numbers, locals: {fn: fn, ln: ln, age: age, hair: hair, eye: eye, food: food, drink: drink}
+end
+
+post '/p_nums' do 
+	fn = params[:fn]
+	ln = params[:ln]
+	age = params[:age]
+	hair = params[:hair]
+	eye = params[:eye]
+	food = params[:food]
+	drink = params[:drink]
+	num1 = params[:num1]
+	num2 = params[:num2]
+	num3 = params[:num3]
+	#sum = num1.to_i + num2.to_i + num3.to_i
+	#"Hello #{fn} #{ln} at #{age} with #{hair} hair and #{eye} eyes. Your favorite food and drink #{food} and #{drink}. Your 3 favorite numbers are #{num1}, #{num2}, #{num3} and there sum is: #{sum}"
+	redirect 'result?fn=' + fn + '&ln=' + ln + '&age=' + age + '&hair=' + hair + '&eye=' + eye + '&food=' + food + '&drink=' + drink + '&num1=' + num1 + '&num2=' + num2 + '&num3=' + num3
+end
+
+def multiply(age, sum)
+	sum * age
+end
+
+get '/result' do 
+	fn = params[:fn]
+	ln = params[:ln]
+	age = params[:age]
+	hair = params[:hair]
+	eye = params[:eye]
+	food = params[:food]
+	drink = params[:drink]
+	num1 = params[:num1]
+	num2 = params[:num2]
+	num3 = params[:num3]
+	sum = num1.to_i + num2.to_i + num3.to_i
+	qwerty = multiply(age.to_i, sum)
+	erb :result, locals: {fn: fn, ln: ln, age: age, hair: hair, eye: eye, food: food, drink: drink, num1: num1, num2: num2, num3: num3, sum: sum, qwerty: qwerty}
+end
