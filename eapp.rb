@@ -2,7 +2,31 @@
 
 require "sinatra"
 
-get '/' do	
+
+
+
+get '/' do
+	msg = params[:msg] || ""
+	erb :login, locals: {msg: msg}
+
+end
+
+def login(un, pw)
+	if un == "admin" && pw == "admin"
+ 		redirect '/user'
+ 	else
+ 		#"Incorrect username or password"
+ 		redirect '/?msg=Incorrect username or password' 
+ 	end
+end 
+
+post '/p_login' do
+	un = params[:un]
+	pw = params[:pw]
+	login(un, pw)
+end 
+
+get '/user' do	
 	erb :un
 	
 end
