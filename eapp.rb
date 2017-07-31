@@ -1,4 +1,4 @@
-	#Extended PersonalDetails
+#Extended PersonalDetails
 
 require "sinatra"
 
@@ -22,7 +22,7 @@ def login(un, pw)
   	end
 end 
 
-post '/p_login' do
+post '/p_login' do	
 	un = params[:un]
 	pw = params[:pw]
 	login(un, pw)

@@ -1,4 +1,4 @@
-#Extended PersonalDetails
+#Calculator
 
 require "sinatra"
 require_relative "/minedminds/github/numbers/add.rb"
@@ -49,24 +49,33 @@ get '/nums' do
 	erb :nums, locals: {fn: fn, ln: ln}
 end
 
+def calc(op, num1, num2)
+	num1 = num1.to_i
+	num2 = num2.to_i
+
+	if op == "+" 
+		t = num1 + num2
+	elsif op == "-"
+		t = num1 - num2
+	elsif op == "*"
+		t = num1 * num2
+	else op == "/"
+		t = num1 / num2
+	end
+	t.to_s
+end
+
 post '/p_nums' do
 	fn = params[:fn]
 	ln = params[:ln]
 	num1 = params[:num1]
 	num2 = params[:num2]
 	op = params[:op]
-
-	if op == "+" 
-		t = add(num1, num2)
-	elsif op == "-"
-		t = sub(num1, num2)
-	elsif op == "*"
-		t = mul(num1, num2)
-	else op == "/"
-		t = div(num1, num2)
-	end
+	t = calc(op, num1, num2)
+	#"#{t}"
 	redirect '/res?fn=' + fn + '&ln=' + ln + '&num1=' + num1 + '&num2=' + num2 + '&op=' + op + '&t=' + t
 end
+
 
 get '/res' do
 	fn = params[:fn]
@@ -74,7 +83,7 @@ get '/res' do
 	num1 = params[:num1].to_s
 	num2 = params[:num2].to_s
 	op = params[:op]
-	t = params[:t].to_s
+	t = params[:t]
 	#z = params[:z] || ""
 	erb :res, locals: {fn: fn, ln: ln, num1: num1, num2: num2, op: op, t: t}
 end
@@ -85,3 +94,4 @@ post '/p_res' do
 	redirect '/nums?fn=' + fn + '&ln=' + ln
 end
 
+#<h1> <%=z%> </h1>
