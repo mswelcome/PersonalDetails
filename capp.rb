@@ -1,12 +1,7 @@
 #Calculator
 
 require "sinatra"
-require_relative "/minedminds/github/numbers/add.rb"
-require_relative "/minedminds/github/subtraction/sub.rb"
-require_relative "/minedminds/github/multiply/mul.rb"
-require_relative "/minedminds/github/division/div.rb"
-
-
+require_relative "calc.rb"
 
 get '/' do
 	msg = params[:msg] || ""
@@ -49,22 +44,6 @@ get '/nums' do
 	erb :nums, locals: {fn: fn, ln: ln}
 end
 
-def calc(op, num1, num2)
-	num1 = num1.to_i
-	num2 = num2.to_i
-
-	if op == "+" 
-		t = num1 + num2
-	elsif op == "-"
-		t = num1 - num2
-	elsif op == "*"
-		t = num1 * num2
-	else op == "/"
-		t = num1 / num2
-	end
-	t.to_s
-end
-
 post '/p_nums' do
 	fn = params[:fn]
 	ln = params[:ln]
@@ -72,7 +51,7 @@ post '/p_nums' do
 	num2 = params[:num2]
 	op = params[:op]
 	t = calc(op, num1, num2)
-	#"#{t}"
+		
 	redirect '/res?fn=' + fn + '&ln=' + ln + '&num1=' + num1 + '&num2=' + num2 + '&op=' + op + '&t=' + t
 end
 
@@ -84,7 +63,9 @@ get '/res' do
 	num2 = params[:num2].to_s
 	op = params[:op]
 	t = params[:t]
-	#z = params[:z] || ""
+	if op == "add"
+		op = "+"
+	end
 	erb :res, locals: {fn: fn, ln: ln, num1: num1, num2: num2, op: op, t: t}
 end
 
@@ -94,4 +75,3 @@ post '/p_res' do
 	redirect '/nums?fn=' + fn + '&ln=' + ln
 end
 
-#<h1> <%=z%> </h1>
