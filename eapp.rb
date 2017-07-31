@@ -1,4 +1,4 @@
-#Extended PersonalDetails
+	#Extended PersonalDetails
 
 require "sinatra"
 
@@ -12,12 +12,14 @@ get '/' do
 end
 
 def login(un, pw)
-	if un == "admin" && pw == "admin"
- 		redirect '/user'
- 	else
- 		#"Incorrect username or password"
- 		redirect '/?msg=Incorrect username or password' 
- 	end
+	users = {admin: "admin", msw: "msw", guest: "guest"}
+	pass = {a: "admin", m: "qwerty", g: "guest"}
+	
+	if users.has_value?(un) && pass.has_value?(pw) 
+  		redirect '/user'
+  	else
+  		redirect '/?msg=Incorrect username or password' 
+  	end
 end 
 
 post '/p_login' do
