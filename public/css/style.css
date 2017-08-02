@@ -1,0 +1,58 @@
+.color {  
+	color: black; 
+	text-decoration: line-through; 
+}
+
+.size {
+	font-family: arial;
+	font-size: 4rem;
+}
+
+ul {
+	text-align: center;
+	font-size: 1.5rem;
+
+}
+
+li {
+	display: inline;
+	padding-right: 1rem;
+	border-style: solid;
+	color: black;
+	border-width: 1px;
+
+
+}
+
+li a:hover {
+	background-color: white;
+
+}
+
+.center {
+	text-align: center;
+}
+
+body {
+	background-image: url(/image/fav_calc.jpg);
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	background-color: gray;
+	color: black;
+	text-align: center;
+}
+
+.active {
+	background-color: white;
+
+}
+
+footer {
+	padding-top: 150px;
+	font-size: 1.5rem;
+}
+
+footer a:hover {
+	background-color: white;
+	position: fixed;
+}
